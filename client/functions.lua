@@ -51,12 +51,18 @@ CreateBlip = function(coords, sprite, colour, text, scale)
     EndTextCommandSetBlipName(blip)
 end
 
-OpenBlackMarket = function()
+
+local function displayNUI(display)
     SendNUIMessage({
         type = "app/setDisplay",
         data = display
     })
     SetNuiFocus(display, display)
+end
+
+OpenBlackMarket = function()
+	local elements = {}
+    displayNUI(true)
 	for i=1, #Config.Items, 1 do
 		local item = Config.Items[i]
 		SendNUIMessage({

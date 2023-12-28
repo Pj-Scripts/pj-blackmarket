@@ -19,11 +19,14 @@ client_scripts {
 	'client/*.lua'
 }
 
-shared_script 'strings.lua'
+shared_scripts {
+	'strings.lua'
+}
+
 
 dependencies {
 	'es_extended',
-	--'qtarget' 
+	'qtarget' -- Removed as dependency because 3d text option provided in config 
 }
 
 ui_page "http://localhost:3000"

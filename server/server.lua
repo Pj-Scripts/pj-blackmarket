@@ -25,6 +25,9 @@ CreateThread(function ()
 end)
 
 
+
+
+
 RegisterServerEvent('pj-blackmarket:item')
 AddEventHandler('pj-blackmarket:item', function(itemName, amount, coords)
 	local xPlayer = ESX.GetPlayerFromId(source)
@@ -55,9 +58,11 @@ AddEventHandler('pj-blackmarket:item', function(itemName, amount, coords)
         if Config.OldESX then
             xPlayer.removeAccountMoney(Config.PayAccount, price)
             if itemType == 'weapon' then
-                xPlayer.addWeapon(itemName, 200)
+				print(xPlayer.source  )
+				exports.ox_inventory:AddItem(xPlayer.source, itemName, amount)
             else
-                xPlayer.addInventoryItem(itemName, amount)
+				print(xPlayer.source )
+				exports.ox_inventory:AddItem(soruce, itemName, amount)
             end
             local label = xPlayer.getInventoryItem(itemName).label
             sendToDiscord(Strings['purchase_title'], (Strings['purchase_message']):format(xPlayer.identifier, xPlayer.getName(), amount, itemName, ESX.Math.GroupDigits(price), 5763719))
@@ -66,9 +71,11 @@ AddEventHandler('pj-blackmarket:item', function(itemName, amount, coords)
             if xPlayer.canCarryItem(itemName, amount) then
                 xPlayer.removeAccountMoney(Config.PayAccount, price)
                 if itemType == 'weapon' then
-                    xPlayer.addWeapon(itemName, 200)
+					print(xPlayer.source)
+					exports.ox_inventory:AddItem(xPlayer.source, itemName, amount)
                 else
-                    xPlayer.addInventoryItem(itemName, amount)
+					print(xPlayer.source)
+					exports.ox_inventory:AddItem(xPlayer.source, itemName, amount)
                 end
                 local label = xPlayer.getInventoryItem(itemName).label
                 sendToDiscord(Strings['purchase_title'], (Strings['purchase_message']):format(xPlayer.identifier, xPlayer.getName(), amount, itemName, ESX.Math.GroupDigits(price), 5763719))

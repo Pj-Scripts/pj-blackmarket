@@ -10,8 +10,6 @@ local function displayNUI(display)
 end
 
 
-
-
 AddEventHandler("onResourceStop", function(resource)
     if resource == Config.resourceName then
         displayNUI(false)
@@ -64,14 +62,14 @@ AddEventHandler("playerspawned", function ()
 end)
 
 
-CreateThread(function ()
-    while Config.randomLocation == nil or Config.MarketPed do
-        Wait(1000)
-    end
-    local coords = Config.randomLocation.coords
-    if Config.oxTarget then
-        exports.ox_target:addBoxZone("BlkMarket", vector3(coords.x, coords.y, coords.z), 1.0, 1.0, {
-            name="BlkMarket",
+CreateThread(function()
+	while Config.randomLocation == nil or Config.MarketPed == nil do
+		Wait(1000)
+	end
+	local coords = Config.randomLocation.coords
+	if Config.qtarget then
+		exports.qtarget:AddBoxZone("BlkMarket", vector3(coords.x, coords.y, coords.z), 1.0, 1.0, {
+			name="BlkMarket",
 			heading=11.0,
 			debugPoly=false,
 			minZ=coords.z-3,
@@ -86,24 +84,24 @@ CreateThread(function ()
 				},
 				distance = 3.5
 		})
-    else
-        CreateThread(function ()
-            while true do
-                local sleep = 1500
-                local plyCoords = GetEntityCoords(PlayerPedId())
-                local dist = #(plyCoords - coords)
-                if dist <= 3 then
-                    sleep = 0
-                    local txtPos = vector3(coords.x, coords.y, coords.z+0.9)
-                    DrawText3D(txtPos, Strings['three_d_txt'])
+	else
+		CreateThread(function()
+			while true do
+				local sleep = 1500
+				local plyCoords = GetEntityCoords(PlayerPedId())
+				local dist = #(plyCoords - coords)
+				if dist <= 3 then
+					sleep = 0
+					local txtPos = vector3(coords.x, coords.y, coords.z+0.9) -- GetOffsetFromEntityInWorldCoords(coords, 0.0, 0.0, 0.0)
+					DrawText3D(txtPos, Strings['three_d_txt'])
 					if dist <= 2 and IsControlJustPressed(0, 38) then
 						TriggerEvent('pj-blackmarket:openShop')
 					end
-                end
-                Wait(sleep)
-            end
-        end)
-    end
+				end
+				Wait(sleep)
+			end
+		end)
+	end
 end)
 
 --Ped Spawn Thread
@@ -145,16 +143,16 @@ AddEventHandler("pj-blackmarket:notify", function (message)
 end)
 
 
-AddEventHandler("pj-blackmarket:openShop", function()
-   local playerPed = PlayerPedId()
-   local coords = GetEntityCoords(playerPed)
-   ESX.TriggerServerCallback("pj-blackmarket:canOpen", function(cb) 
-    if cb then
-        OpenBlackMarket()
-    elseif not cb then
-        bigRewards()
-    end
-   end, coords)
+AddEventHandler('pj-blackmarket:openShop', function()
+	local playerPed = PlayerPedId()
+	local coords = GetEntityCoords(playerPed)
+	ESX.TriggerServerCallback('pj-blackmarket:canOpen', function(cb)
+		if cb then
+			OpenBlackMarket()
+		elseif not cb then
+			bigRewards()
+		end
+	end, coords)
 end)
 
 
