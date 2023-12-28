@@ -4,13 +4,33 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 import { ScrollArea } from "./ui/scroll-area";
 import { nuiCallback } from "@/lib/nuiCallback";
+import { useEffect } from "react";
+
+interface ItemData {
+  price?: number;
+  item: string;
+  itemLabel: string;
+}
 
 const AllMenu = () => {
-  function buyItem(data: any) {
-    nuiCallback(`/${data}`, {}, (result: string) => {
-      console.log("Result", result);
-    });
-  }
+  useEffect(() => {
+    const messageHandler = (event: MessageEvent<ItemData>) => {
+      const data = event.data;
+      if (data.price !== undefined) {
+        console.log("no price");
+      }
+    };
+
+    window.addEventListener("message", messageHandler);
+
+    return () => {
+      window.removeEventListener("message", messageHandler);
+    };
+  }, []);
+
+  const buyItem = (item: string) => {
+    nuiCallback("/item", { item });
+  };
 
   return (
     <ScrollArea className="w-full h-[590px]">

@@ -6,7 +6,7 @@ export const data = {
       effect: "50%",
       price: "500",
       ImageName: "/vest2.png",
-      itemName: "buyBulletproofVest",
+      itemName: "WEAPON_ASSAULTRIFLE",
     },
     {
       id: "Armor2",
