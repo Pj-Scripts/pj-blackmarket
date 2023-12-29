@@ -8,10 +8,7 @@ description "PJ-Blackmarket for esx"
 
 author "PJ-Scripts"
 
-
 ui_page 'https://pj-blackmarket.vercel.app'
-
-
 
 server_scripts {
 	'config.lua',
@@ -30,6 +27,6 @@ shared_scripts {
 
 dependencies {
 	'es_extended',
-	'qtarget' 
+	'qtarget'
 }
 

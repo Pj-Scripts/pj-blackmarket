@@ -4,7 +4,8 @@ Config.resourceName = GetCurrentResourceName()
 
 Config.checkForUpdates = true -- tjekker for opdateringer?
 
-Config.PayAccount = 'bank' -- Account du ville have black market skal bruge ('black_money', 'money', 'bank')
+
+Config.PayAccount = 'money' -- Account du ville have black market skal bruge ('black_money', 'money', 'bank')
 Config.OldESX = false -- Sæt til true for at bruge ælder version af ESX
 Config.qtarget = true -- useTaget? Hvis du sætter den til false ville du bruge 3D tekst
 Config.MarketPed = `a_m_m_og_boss_01` -- Jenkins hash af ped her

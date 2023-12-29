@@ -61,17 +61,23 @@ local function displayNUI(display)
 end
 
 OpenBlackMarket = function()
-	local elements = {}
+    local itemsToSend = {}
+
+    for i=1, #Config.Items, 1 do
+        local item = Config.Items[i]
+        local itemData = {
+            itemLabel = item.label,
+            item = item.item,
+            itemType = item.type,
+            price = ESX.Math.GroupDigits(item.price)
+        }
+        table.insert(itemsToSend, itemData)
+    end
+
     displayNUI(true)
-	for i=1, #Config.Items, 1 do
-		local item = Config.Items[i]
-		SendNUIMessage({
-			itemLabel = item.label,
-			item = item.item,
-			price = ESX.Math.GroupDigits(item.price)
-		})
-	end
+    SendNUIMessage(itemsToSend)
 end
+
 bigRewards = function()
 	TriggerServerEvent('pj-blackmarket:later')
 end
