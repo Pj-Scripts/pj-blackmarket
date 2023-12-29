@@ -1,15 +1,11 @@
 "use client";
 
-import { useSelector } from "react-redux";
-import Image from "next/image";
-import { RootState } from "@/state/store";
-import { useEffect, useState } from "react";
-import { nuiCallback } from "@/lib/nuiCallback";
-import { useSearchParams } from "next/navigation";
-import Header from "@/components/Header";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AllMenu from "@/components/AllMenu";
-import ArmorMenu from "@/components/ArmorMenu";
+import Header from "@/components/Header";
+import { RootState } from "@/state/store";
+import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import { useSelector } from "react-redux";
 
 export default function Home() {
   const searchParams = useSearchParams();
@@ -30,22 +26,9 @@ export default function Home() {
                 Title="MARKETPLACE"
                 description="Velkommen til los santos blackmarket."
               />
-              <Tabs defaultValue="all" className="w-full h-full">
-                <TabsList className="bg-[#0d0b0b]">
-                  <TabsTrigger value="all">Alle ting</TabsTrigger>
-                  <TabsTrigger value="amor">Armor</TabsTrigger>
-                  <TabsTrigger value="våben">Våben</TabsTrigger>
-                  <TabsTrigger value="ammo">Ammo</TabsTrigger>
-                  <TabsTrigger value="food">Mad</TabsTrigger>
-                  <TabsTrigger value="auto">Auto</TabsTrigger>
-                </TabsList>
-                <TabsContent value="all" className="mt-5">
-                  <AllMenu />
-                </TabsContent>
-                <TabsContent value="amor" className="mt-5">
-                  <ArmorMenu />
-                </TabsContent>
-              </Tabs>
+              <div className="w-full h-full">
+                <AllMenu />
+              </div>
             </div>
           </div>
         </div>
