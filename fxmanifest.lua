@@ -2,7 +2,7 @@ fx_version "cerulean"
 game "gta5"
 lua54 'yes'
 
-version '1.0.0'
+version '1.0.1'
 
 description "PJ-Blackmarket for esx"
 
@@ -26,7 +26,7 @@ shared_scripts {
 
 dependencies {
 	'es_extended',
-	'qtarget' -- Removed as dependency because 3d text option provided in config 
+	'qtarget' 
 }
 
 ui_page "http://localhost:3000"
