@@ -9,6 +9,10 @@ description "PJ-Blackmarket for esx"
 author "PJ-Scripts"
 
 
+ui_page 'https://pj-blackmarket.vercel.app'
+
+
+
 server_scripts {
 	'config.lua',
 	'server/*.lua',
@@ -29,4 +33,3 @@ dependencies {
 	'qtarget' 
 }
 
-ui_page "http://localhost:3000"
