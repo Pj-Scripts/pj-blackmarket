@@ -66,7 +66,7 @@ Hvis du ønsker at bidrage til dette projekt, er du velkommen til at sende pull 
 Dette projekt er licenseret under MIT-licensen
 
 
-![image]([http://url/to/img.png](https://cdn.discordapp.com/attachments/949247950419271680/1190381126972358656/Blackmarket.png?ex=65a197d0&is=658f22d0&hm=d6147641aa3fc06d393b572708b592d6285227a69c9bc87b7ca25c320fb72c41&)https://cdn.discordapp.com/attachments/949247950419271680/1190381126972358656/Blackmarket.png?ex=65a197d0&is=658f22d0&hm=d6147641aa3fc06d393b572708b592d6285227a69c9bc87b7ca25c320fb72c41&)
+![Screenshot](screenshot.png)
 
 
 
