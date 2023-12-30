@@ -58,10 +58,10 @@ AddEventHandler('pj-blackmarket:item', function(itemName, amount, coords)
         if Config.OldESX then
             xPlayer.removeAccountMoney(Config.PayAccount, price)
             if itemType == 'weapon' then
-				print(xPlayer.source  )
+		
 				exports.ox_inventory:AddItem(xPlayer.source, itemName, amount)
             else
-				print(xPlayer.source )
+
 				exports.ox_inventory:AddItem(soruce, itemName, amount)
             end
             local label = xPlayer.getInventoryItem(itemName).label
@@ -71,10 +71,10 @@ AddEventHandler('pj-blackmarket:item', function(itemName, amount, coords)
             if xPlayer.canCarryItem(itemName, amount) then
                 xPlayer.removeAccountMoney(Config.PayAccount, price)
                 if itemType == 'weapon' then
-					print(xPlayer.source)
+
 					exports.ox_inventory:AddItem(xPlayer.source, itemName, amount)
                 else
-					print(xPlayer.source)
+		
 					exports.ox_inventory:AddItem(xPlayer.source, itemName, amount)
                 end
                 local label = xPlayer.getInventoryItem(itemName).label
