@@ -66,42 +66,20 @@ CreateThread(function()
 	while Config.randomLocation == nil or Config.MarketPed == nil do
 		Wait(1000)
 	end
-	local coords = Config.randomLocation.coords
-	if Config.qtarget then
-		exports.qtarget:AddBoxZone("BlkMarket", vector3(coords.x, coords.y, coords.z), 1.0, 1.0, {
-			name="BlkMarket",
-			heading=11.0,
-			debugPoly=false,
-			minZ=coords.z-3,
-			maxZ=coords.z+3,
-			}, {
-				options = {
-					{
-						event = "pj-blackmarket:openShop",
-						icon = "fas fa-briefcase",
-						label = Strings['open_market'],
-					},
-				},
-				distance = 3.5
-		})
-	else
-		CreateThread(function()
-			while true do
-				local sleep = 1500
-				local plyCoords = GetEntityCoords(PlayerPedId())
-				local dist = #(plyCoords - coords)
-				if dist <= 3 then
-					sleep = 0
-					local txtPos = vector3(coords.x, coords.y, coords.z+0.9) -- GetOffsetFromEntityInWorldCoords(coords, 0.0, 0.0, 0.0)
-					DrawText3D(txtPos, Strings['three_d_txt'])
-					if dist <= 2 and IsControlJustPressed(0, 38) then
-						TriggerEvent('pj-blackmarket:openShop')
-					end
+	exports.ox_target:addSphereZone({
+		coords = vec3(Config.randomLocation.coords),
+		radius = 1,
+		debug = drawZones,
+		options = {
+			{
+				icon = 'fa-solid fa-tag',
+				label = "Tilgå blackmarket",
+				onSelect = function ()
+					OpenBlackMarket()
 				end
-				Wait(sleep)
-			end
-		end)
-	end
+			}
+		}
+	})
 end)
 
 --Ped Spawn Thread
