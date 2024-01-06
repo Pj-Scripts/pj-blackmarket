@@ -1,4 +1,10 @@
 
+-- functions.lua
+-- This file is authored by PJ-Script and owned by Patrick Jakobsen.
+-- Date: 2024-01-06
+-- Author: PJ-Script
+-- License: MIT (https://opensource.org/licenses/MIT)
+
 loadModel = function(model)
     while not HasModelLoaded(model) do Wait(0) RequestModel(model) end
     return model

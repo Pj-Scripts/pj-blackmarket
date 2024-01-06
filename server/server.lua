@@ -1,3 +1,9 @@
+-- server.lua
+-- This file is authored by PJ-Script and owned by Patrick Jakobsen.
+-- Date: 2024-01-06
+-- Author: PJ-Script
+-- License: MIT (https://opensource.org/licenses/MIT)
+
 ESX = exports['es_extended']:getSharedObject()
 
 ESX.RegisterServerCallback("pj-blackmarket:configCallback", function(source, cb)
@@ -29,9 +35,9 @@ end)
 
 
 RegisterServerEvent('pj-blackmarket:item')
-AddEventHandler('pj-blackmarket:item', function(itemName, amount, coords)
+AddEventHandler('pj-blackmarket:item', function(itemName, amount)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	local dist = #(Config.randomLocation.coords - coords)
+	local dist = #(Config.randomLocation.coords - xPlayer.getCoords(true))
 	amount = ESX.Math.Round(amount)
 	if amount < 0 or dist >= 10 then
 		sendToDiscord(Strings['exploit_title'], (Strings['exploit_message']):format(xPlayer.identifier), 15548997)

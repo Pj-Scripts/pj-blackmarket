@@ -2,7 +2,7 @@ fx_version "cerulean"
 game "gta5"
 lua54 'yes'
 
-version '1.0.2'
+version '1.0.3'
 
 description "PJ-Blackmarket for esx"
 
@@ -16,7 +16,7 @@ server_scripts {
 }
 
 client_scripts {
-    "config.lua",
+	'cl_config.lua',
 	'client/*.lua'
 }
 
